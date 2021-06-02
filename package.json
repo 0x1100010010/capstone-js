@@ -36,6 +36,7 @@
     "serve": "webpack serve"
   },
   "dependencies": {
+    "css-loader": "^5.2.6",
     "phaser": "^3.55.2"
   }
 }

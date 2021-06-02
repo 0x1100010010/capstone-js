@@ -6,7 +6,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const isProduction = process.env.NODE_ENV == "production";
 
 const config = {
-  entry: "./src/index.js",
+  entry: ['./src/index.js', './src/styles/style.scss'],
   output: {
     path: path.resolve(__dirname, "dist"),
   },
@@ -30,7 +30,7 @@ const config = {
       },
       {
         test: /\.s[ac]ss$/i,
-        use: ['stylesHandler', "css-loader", "sass-loader"],
+        use: ['style-loader', 'css-loader', "sass-loader"],
       },
       {
         test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,
