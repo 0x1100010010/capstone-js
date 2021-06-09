@@ -1,4 +1,5 @@
 import Phaser from 'phaser';
+import Parallax from './parallax';
 
 var config = {
     type: Phaser.AUTO,
@@ -7,25 +8,25 @@ var config = {
     physics: {
         default: 'arcade',
         arcade: {
-            gravity: { y: 200 }
+            gravity: { y: 200 },
+            debug: false
         }
     },
-    scene: {
-        preload: preload,
-        create: create,
-        update: update
-    }
+    // scene: {
+    //     preload, create, Parallax, update
+    // }
+    scene: [Parallax]
 };
 
 var game = new Phaser.Game(config);
 
 function preload ()
 {
-    this.load.setBaseURL('http://labs.phaser.io');
+    // this.load.setBaseURL('http://labs.phaser.io');
 
-    this.load.image('sky', 'assets/skies/space3.png');
-    this.load.image('logo', 'assets/sprites/phaser3-logo.png');
-    this.load.image('red', 'assets/particles/red.png');
+    this.load.image('sky', '../src/assets/images/background.png');
+    this.load.image('logo', 'http://labs.phaser.io/assets/sprites/phaser3-logo.png');
+    this.load.image('red', 'http://labs.phaser.io/assets/particles/rising-smoke.png');
 }
 
 function create ()
@@ -35,16 +36,20 @@ function create ()
     var particles = this.add.particles('red');
 
     var emitter = particles.createEmitter({
-        speed: 100,
+        speed: 10,
         scale: { start: 1, end: 0 },
         blendMode: 'ADD'
     });
 
     var logo = this.physics.add.image(400, 100, 'logo');
 
-    logo.setVelocity(100, 200);
+    logo.setVelocity(100, 100);
     logo.setBounce(1, 1);
     logo.setCollideWorldBounds(true);
 
     emitter.startFollow(logo);
+}
+
+function update ()
+{
 }
