@@ -3,8 +3,8 @@ import Parallax from './parallax';
 
 var config = {
     type: Phaser.AUTO,
-    width: 800,
-    height: 600,
+    width: 1300,
+    height:750,
     physics: {
         default: 'arcade',
         arcade: {
