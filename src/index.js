@@ -1,6 +1,9 @@
 import Phaser from 'phaser';
 import Parallax from './parallax';
 
+import preloadGame from './preloadGame';
+import playGame from './playGame';
+
 var config = {
     type: Phaser.AUTO,
     width: 1300,
@@ -15,7 +18,7 @@ var config = {
     // scene: {
     //     preload, create, Parallax, update
     // }
-    scene: [Parallax]
+    scene: [preloadGame, playGame]
 };
 
 let game = new Phaser.Game(config);
